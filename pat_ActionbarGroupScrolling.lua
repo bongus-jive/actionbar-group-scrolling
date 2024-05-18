@@ -1,12 +1,16 @@
+local maxGroups
+local lastSlot = false
+
 function init()
   if not starExtensions and script.updateDt() ~= 0 then
     sb.logWarn("'Actionbar Group Scrolling' requires StarExtensions - https://github.com/StarExtensions/StarExtensions/releases")
     script.setUpdateDelta(0)
     update = nil
+    return
   end
-end
 
-local lastSlot = false
+  maxGroups = root.assetJson("/player.config:inventory.customBarGroups")
+end
 
 function update()
   if not input.key("LAlt") then
@@ -25,7 +29,7 @@ function update()
   
   for _, event in ipairs(events) do
     if event.type == "MouseWheel" then
-      local group = player.actionBarGroup() + event.data.mouseWheel
+      local group = ((player.actionBarGroup() + event.data.mouseWheel - 1) % maxGroups) + 1
       player.setActionBarGroup(group)
       player.setSelectedActionBarSlot(lastSlot)
     end
