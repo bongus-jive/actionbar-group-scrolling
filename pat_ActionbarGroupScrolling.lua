@@ -2,8 +2,8 @@ local maxGroups
 local lastSlot = false
 
 function init()
-  if not starExtensions and script.updateDt() ~= 0 then
-    sb.logWarn("'Actionbar Group Scrolling' requires StarExtensions - https://github.com/StarExtensions/StarExtensions/releases")
+  if input then
+    sb.logWarn("'Actionbar Group Scrolling' requires StarExtensions or OpenStarbound")
     script.setUpdateDelta(0)
     update = nil
     return
