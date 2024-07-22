@@ -1,4 +1,4 @@
-requires [StarExtensions](https://github.com/StarExtensions/StarExtensions)
+requires StarExtensions/OpenStarbound
 
 
 scrolls through actionbar groups with alt + scroll wheel
